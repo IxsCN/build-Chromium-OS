@@ -366,4 +366,6 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ wget http://nas.marixs/netboot_firmware_settings.py && chmod 777 netboot_firmware_settings.py
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
     ```
-    + and i have no idea for this.
+    + no time to verify other guess.
+
++ complete documentation
