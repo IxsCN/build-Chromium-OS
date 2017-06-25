@@ -121,12 +121,14 @@ In the end, resolve it by build libpcre form src code.
 
     ``` shell
     $ repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url     https://chromium.googlesource.com/external/repo.git -g minilayout
-     ```
+    ```
+    
     + repo sync
 
     ``` shell
-    $ repo sync -j10
+    $ repo sync -j10
     ```
+    
 + Google api key
     There are two ways to providing  api key into OS.
 "at Build Time " or "at Runtime",
