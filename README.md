@@ -254,9 +254,12 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
      ```
      
 + fix error of chromeos-base/factory.
+
     + I found this post. [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ),  no Reply, feel hopeless (‘⊙д-) .
-    + same as last error (net-misc/tlsdate).
     
+    + same as last error (net-misc/tlsdate).
+
+
     ```shell
     $ PACKAGE_NAME="chromeos-base/factory"
     $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
@@ -277,7 +280,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     *** FAIL [0.21 s] py/tools/build_board_unittest.py (return:1)
     *** FAIL [1.17 s] py/utils/sys_utils_unittest.py (return:1)
     ```
-    
+
     + from the result, compile is PASS,so guess the unit test script is not good
     + by read Makefile, I find unittest blacklist fuc,so have a try.
     
