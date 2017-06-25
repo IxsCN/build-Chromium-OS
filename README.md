@@ -43,7 +43,7 @@ PWD is qgxj
     ``` shell
     $ cd ~
     $ git clone https://github.com/shadowsocksr/shadowsocksr-libev.git
-     ```
+    ```
 
     + install dependent  library
 
