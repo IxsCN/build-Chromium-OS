@@ -312,4 +312,6 @@ oard=${BOARD} chromeos-base/factory --install
     lrwxrwxrwx 1 sunxiaoyu chronos    43 6月  25 19:58 netboot_firmware_settings.py -> ../../dev/host/netboot_firmware_settings.py
 
     ```
-    + and found that file is empty, so download file from , and try relplace it.
+    + ~ and found that file is empty, it may project's bug. and i found this in Google [netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago](https://chromium.googlesource.com/chromiumos/platform/dev-util/) ~
+    + ~ so I'm sure that, the softlink is wrong. Fix it. ~
+    + so download file from [here](https://chromium.googlesource.com/chromiumos/platform/dev-util/+/c0bcabb6682eb0ad4597ee32e270d66c5633c340/host/netboot_firmware_settings.py) , and try relplace it.
