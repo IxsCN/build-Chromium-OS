@@ -25,9 +25,9 @@ PWD is qgxj
     + some other skills up. eg: mount, git
     
 + about unrepaired error (chromeos-base/factory)
-    + [repo log](https://chromium.googlesource.com/chromiumos/platform/dev-util/),c0bcabb netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago. is this file(netboot_firmware_settings.py) be changed from dev folder  to dev-util folder?  to be confirmed.
+    + [repo log](https://chromium.googlesource.com/chromiumos/platform/dev-util/),c0bcabb netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago. is this file(netboot_firmware_settings.py) be changed from dev folder  to dev-util folder?  to be confirmed.
     + this post is same with me [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ), but no one reply.
-    + if i get old version code from repo, will be OK? no enough time to check. to be confirmed.
+    + if i get old version code from repo, will be OK? no enough time to check. to be confirmed.
 
 
 ### 0. deal with the network
