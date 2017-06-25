@@ -176,18 +176,18 @@ all toubles has was recorded in Mind Mapping.
 + try build image.
     guest that, if the package is not impotant, build image will work.
 
-```
-$ ./build_image --board=${BOARD} --noenable_rootfs_verification test
-....
-....
-....
-...
-emerge: there are no ebuilds to satisfy "virtual/target-os" for /mnt/host/source/src/build/images/x86-generic/R61-9680.0.2017_06_25_0021-a1/rootfs/.
+    ```
+    $ ./build_image --board=${BOARD} --noenable_rootfs_verification test
+    ....
+    ....
+    ....
+    ...
+    emerge: there are no ebuilds to satisfy "virtual/target-os" for /mnt/host/source/src/build/images/x86-generic/R61-9680.0.2017_06_25_0021-a1/rootfs/.
 
-emerge: searching for similar names...
-emerge: Maybe you meant any of these: virtual/target-os-dev, virtual/target-os-test, virtual/assets?
+    emerge: searching for similar names...
+    emerge: Maybe you meant any of these: virtual/target-os-dev, virtual/target-os-test, virtual/assets?
 
-```
+    ```
 it seems not work, and also I get wrong understand of this. So i gave up and find a new laptop, ALL OVER AGAIN.
 
 + fix error of net-misc/tlsdate. According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
@@ -321,8 +321,8 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ ls ../../dev/host/netboot_firmware_settings.py
     -bash: ../../dev/host/netboot_firmware_settings.py: No such file or directory
     ```
-    + ~ and found that file is empty, it may project's bug. and i found this in Google [netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago](https://chromium.googlesource.com/chromiumos/platform/dev-util/) ~
-    + ~ so I'm sure that, the softlink is wrong. Fix it. ~
+    + ~and found that file is empty, it may project's bug. and i found this in Google [netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago](https://chromium.googlesource.com/chromiumos/platform/dev-util/)~
+    + ~so I'm sure that, the softlink is wrong. Fix it.~
     + so download file from [here](https://chromium.googlesource.com/chromiumos/platform/dev-util/+/c0bcabb6682eb0ad4597ee32e270d66c5633c340/host/netboot_firmware_settings.py) , and try relplace it.
     
     ```
@@ -331,3 +331,4 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
     ```
     
+~1111111~
