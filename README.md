@@ -1,9 +1,23 @@
 # Build  Chromium OS step by step
 
-###  It is little hard for me, all the thing is unkown ,  even  developer-guide is very detailed
-+ some fool mistake I had made,  finally I didn't complete the exercise
-    +  creat workspace on smb and NFS 
-    + 
+###  It is little hard for me, everything is strange,  even developer-guide is very detailed.
+
+## summary
+
++ some foolish mistake I had made,  finally I didn't complete the exercise.
+
+    + creat workspace on smb.
+    + creat workspace on NFS.
+    + didn't use [-g minilayout] purposely, waste so much time.
+    + misunderstand the log tips, and send mail for you.
+    + in the end，I am not complete the exercise.
+    + all of all, Too eager to do every.
+    + For the above reasons， I had did these peocess all over again, even three times.
+    
++ learned
+
+    + I had learned the process of Build  Chromium OS，although not build image sucessful.
+    + I believe that, the way of "change the booting animation to Flint OS" is same with fix bug (net-misc/tlsdate).
 
 
 ### 0. deal with the network
@@ -25,7 +39,7 @@
     $ sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev asciidoc xmlto
     ```
 
-    + ./configure  && make
+    + ./configure && make
 
     ``` shell
     $ cd shadowsocksr-libev &&  ./configure  && make
@@ -264,6 +278,9 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ repo sync
     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     Re-run failed tests sequentially:
+    ...
+    ...
+    ...
     *** PASS [5.73 s] go/src/overlord/test/overlord_e2e_unittest.py
     *** FAIL [1.57 s] py/goofy/goofy_unittest.py (return:1)
     *** FAIL [3.98 s] py/hwid/v3/builder_unittest.py (return:1)
