@@ -5,6 +5,7 @@
     +  creat workspace on smb and NFS 
     + 
 
+
 ### 0. deal with the network
 + Determine the purpose
     + penetrate the firewall
@@ -125,4 +126,34 @@ all toubles has was recorded in Mind Mapping.
     $ ./set_shared_user_password.sh
     $ ./build_packages --board=${BOARD}
     ```
-it will take
++ it take so much time, and in the end it done,but two package error
+    + chromeos-base/factory
+    ```
+    factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py"
+    factory-0.2.0-r372: rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1178) [sender=3.1.2]
+factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
+    ```
+    + net-misc/tlsdate
+    ```
+    make[1]: Entering directory '/build/x86-generic/tmp/portage/net-misc/tlsdate-0.0.5-r48/work/tlsdate-0.0.5'
+    tlsdate-0.0.5-r48:   CC       src/conf.o
+    tlsdate-0.0.5-r48:   CC       src/conf-unittest.o
+    tlsdate-0.0.5-r48:   CC       src/platform-cros-util.o
+    tlsdate-0.0.5-r48:   CC       src/platform-cros-util-unittest.o
+    tlsdate-0.0.5-r48:   CC       src/src_tlsdated_unittest-tlsdated-unittest.o
+    tlsdate-0.0.5-r48:   CC       src/src_tlsdated_unittest-conf.o
+    tlsdate-0.0.5-r48:   CC       src/src_tlsdated_unittest-routeup.o
+    tlsdate-0.0.5-r48: src/platform-cros-util-unittest.c: In function 'test_canonicalize_pac_parsing':
+    tlsdate-0.0.5-r48: src/platform-cros-util-unittest.c:71:3: error: 'for' loop initial declarations are only allowed in C99 or C11 mode
+    tlsdate-0.0.5-r48:    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
+    tlsdate-0.0.5-r48:    ^
+    tlsdate-0.0.5-r48: src/platform-cros-util-unittest.c:71:3: note: use option -std=c99, -std=gnu99, -std=c11 or -std=gnu11 to compile your code
+    tlsdate-0.0.5-r48: src/platform-cros-util-unittest.c: In function 'test_canonicalize_pac_overflow':
+    tlsdate-0.0.5-r48: src/platform-cros-util-unittest.c:95:3: error: 'for' loop initial declarations are only allowed in C99 or C11 mode
+    tlsdate-0.0.5-r48:    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
+    tlsdate-0.0.5-r48:    ^
+    tlsdate-0.0.5-r48: make[1]: *** [Makefile:1222: src/platform-cros-util-unittest.o] Error 1
+    tlsdate-0.0.5-r48: make[1]: *** Waiting for unfinished jobs....
+    tlsdate-0.0.5-r48: make[1]: Leaving directory '/build/x86-generic/tmp/portage/net-misc/tlsdate-0.0.5-r48/work/tlsdate-0.0.5'
+    tlsdate-0.0.5-r48: make: *** [Makefile:777: all] Error 2
+    ```
