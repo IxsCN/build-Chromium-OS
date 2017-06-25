@@ -230,7 +230,32 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     
     ```
     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
+    ...
+    ...
+    ...
+     * Generating license for net-misc/tlsdate-9999 in /build/x86-generic/tmp/portage/net-misc/tlsdate-9999
+    19:41:16: INFO: Read licenses for net-misc/tlsdate-9999: BSD
+    19:41:16: INFO: net-misc/tlsdate-9999: can't use BSD, will scan source code for copyright
+    19:41:16: INFO: RunCommand: find /build/x86-generic/tmp/portage/net-misc/tlsdate-9999/work -type f
+    19:41:16: ERROR: 
+    net-misc/tlsdate-9999: unable to find usable license.
+    Typically this will happen because the ebuild says it's MIT or BSD, but there
+    was no license file that this script could find to include along with a
+    copyright attribution (required for BSD/MIT).
+
+    If this is Google source, please change
+    LICENSE="BSD"
+    to
+    LICENSE="BSD-Google"
+
+    If not, go investigate the unpacked source in /build/x86-generic/tmp/portage/net-misc/tlsdate-9999/work,
+    and find which license to assign.  Once you found it, you should copy that
+    license to a file under /mnt/host/source/src/third_party/chromiumos-overlay/licenses/copyright-attribution
+    (or you can modify LICENSE_NAMES_REGEX to pickup a license file that isn't
+    being scraped currently).
+
     ```
+    
      and something wrong about license, logs give a URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      and searched the "Chromium OS dev", find this [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      so i copyed "Google-TOS" license.
