@@ -224,4 +224,10 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
     cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     ```
      and something wrong about license, it show the URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
+     and searched the "Chromium OS dev", find this [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
+     so i copyed "Google-TOS" license.
+     
+     ```
+     
+     ```
 
