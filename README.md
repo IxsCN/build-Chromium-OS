@@ -225,8 +225,8 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + 1. edit the src/platform-cros-util-unittest.c
     + 2. edit Makefile, and add -std=c11, I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.like this:
 
-    ```
-    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
+    ```
+    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
     ```
 
     to
@@ -371,6 +371,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ wget http://nas.marixs/netboot_firmware_settings.py && chmod 777 netboot_firmware_settings.py
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
     ```
+
     + no time to verify other guess.
 
 + complete documentation
