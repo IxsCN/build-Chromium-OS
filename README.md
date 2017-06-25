@@ -161,7 +161,7 @@ all toubles has was recorded in Mind Mapping.
     tlsdate-0.0.5-r48: make: *** [Makefile:777: all] Error 2
     ```
 + try build image.
-guest that, if the package is not impotant, build image will work.
+    guest that, if the package is not impotant, build image will work.
 
 ```
 $ ./build_image --board=${BOARD} --noenable_rootfs_verification test
@@ -177,24 +177,22 @@ emerge: Maybe you meant any of these: virtual/target-os-dev, virtual/target-os-t
 ```
 it seems not work, and also I get wrong understand of this. So i gave up and find a new laptop, ALL OVER AGAIN.
 
-+ fix error of net-misc/tlsdate
-According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
++ fix error of net-misc/tlsdate. According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
     + first mark the package (net-misc/tlsdate) as active. and sync down source sources
     
     ```
-    PACKAGE_NAME="net-misc/tlsdate"
-    cros_workon --board=${BOARD} start ${PACKAGE_NAME}
-    repo sync
+    $ PACKAGE_NAME="net-misc/tlsdate"
+    $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
+    $ repo sync
     ```
     
     + second Create a branch 
     
     ```
-    repo start marixs
+    $ repo start marixs
     ```
     
-    + and then fix the error
-    may two ways to fix it.
+    + and then fix the error. may two ways to fix it.
         + edit the src/platform-cros-util-unittest.c
         + edit Makefile, and add -std=c11
         
@@ -215,13 +213,13 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
     + make the package
     
     ```
-    cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
+    $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
     ```
     
-    + last install the changes
+    + install the changes
     
     ```
-    cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
+    $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     ```
      and something wrong about license, it show the URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      and searched the "Chromium OS dev", find this [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
@@ -258,4 +256,15 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
 
      ```
      
++ fix error of chromeos-base/factory.
+    + searched: I found this post. [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ),  hopeless (‘⊙д-) .
 
+    + like last error (net-misc/tlsdate).
+    
+    ```
+    $ PACKAGE_NAME="chromeos-base/factory"
+    $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
+    $ repo sync
+    $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
+    ```
+    
