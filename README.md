@@ -222,8 +222,8 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     ```
     
     + then fix the error. two ways may fix it.
-    + 1. edit the src/platform-cros-util-unittest.c
-    + 2. edit Makefile, and add -std=c11, I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.like this:
+    + 1. edit the src/platform-cros-util-unittest.c.
+    + 2. edit Makefile, and add -std=c11, I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.like this:
 
     ```
     for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
@@ -370,8 +370,8 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ cd ./../dev/host/ 
     $ wget http://nas.marixs/netboot_firmware_settings.py && chmod 777 netboot_firmware_settings.py
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
-    ```
+    ```
 
-    + no time to verify other guess.
+    + no time to verify other guess.
 
 + complete documentation
