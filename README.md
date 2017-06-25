@@ -13,6 +13,7 @@ PWD is qgxj
     + creat workspace on smb.
     + creat workspace on NFS.  
     + didn't use [-g minilayout] purposely, waste so much time.
+    + already have SSR client on my router, so i don't need waste time to build it.
     + misunderstand the log tips, and send mail for you.
     + in the end，i am not complete the exercise.
     + all of all, too eager to do every.
@@ -61,7 +62,7 @@ PWD is qgxj
 
 some trouble with libpcre libpcre-dev.
 use apt install can't fix it.
-In the end, resolve it by make libpcre my self.
+In the end, resolve it by build libpcre form src code.
 
 ### 1. Get Chromium OS code and start building
 
@@ -77,7 +78,7 @@ In the end, resolve it by make libpcre my self.
     $ export PATH=`pwd`/depot_tools:"$PATH"
     ```
  
-+ Tweak your sudoers configuration
++ Tweak sudoers configuration
     It is not compatible with  cros_sdk.
 
     ``` shell
