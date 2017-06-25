@@ -259,13 +259,10 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + same as last error (net-misc/tlsdate)
     
     ```
-    $ PACKAGE_NAME="chromeos-base/factory"
+    $ PACKAGE_NAME="chromeos-base/factory"
     $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
     $ repo sync
-    $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
-    ```
-    
-    ```
+    $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     Re-run failed tests sequentially:
     *** PASS [5.73 s] go/src/overlord/test/overlord_e2e_unittest.py
     *** FAIL [1.57 s] py/goofy/goofy_unittest.py (return:1)
