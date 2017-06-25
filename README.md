@@ -14,9 +14,9 @@ PWD is qgxj
     + creat workspace on NFS.  
     + didn't use [-g minilayout] purposely, waste so much time.
     + misunderstand the log tips, and send mail for you.
-    + in the end，i am not complete the exercise.
-    + all of all, too eager to do every.
-    + for the above reasons， I had did these peocess all over again, even three times.
+    + in the end，i am not complete the exercise.
+    + all of all, too eager to do every.
+    + for the above reasons， I had did these peocess all over again, even three times.
     
 + learned
 
