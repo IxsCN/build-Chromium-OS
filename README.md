@@ -132,7 +132,7 @@ all toubles has was recorded in Mind Mapping.
     ```
     factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py"
     factory-0.2.0-r372: rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1178) [sender=3.1.2]
-factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
+    factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
     ```
     
     + net-misc/tlsdate
@@ -160,3 +160,67 @@ factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
     tlsdate-0.0.5-r48: make[1]: Leaving directory '/build/x86-generic/tmp/portage/net-misc/tlsdate-0.0.5-r48/work/tlsdate-0.0.5'
     tlsdate-0.0.5-r48: make: *** [Makefile:777: all] Error 2
     ```
++ try build image.
+guest that, if the package is not impotant, build image will work.
+
+```
+$ ./build_image --board=${BOARD} --noenable_rootfs_verification test
+....
+....
+....
+...
+emerge: there are no ebuilds to satisfy "virtual/target-os" for /mnt/host/source/src/build/images/x86-generic/R61-9680.0.2017_06_25_0021-a1/rootfs/.
+
+emerge: searching for similar names...
+emerge: Maybe you meant any of these: virtual/target-os-dev, virtual/target-os-test, virtual/assets?
+
+```
+it seems not work, and also I get wrong understand of this. So i gave up and find a new laptop, ALL OVER AGAIN.
+
++ fix error of net-misc/tlsdate
+
+According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
+
+    + first mark the package (net-misc/tlsdate) as active. and sync down source sources
+    
+    ```
+    PACKAGE_NAME="net-misc/tlsdate"
+    cros_workon --board=${BOARD} start ${PACKAGE_NAME}
+    repo sync
+    ```
+    
+    + second Create a branch 
+    
+    ```
+    repo start marixs
+    ```
+    + and then fix the error
+    may two ways to fix it.
+        + edit the src/platform-cros-util-unittest.c
+        + edit Makefile, and add -std=c11
+        
+    I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.
+    like this:
+    ```
+    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
+    ```
+
+    to
+
+    ```
+    size_t i=0;
+    for (i = 0; i < ARRAYSIZE(kCases); ++i) {
+    ```
+    
+    + make the package
+    
+    ```
+    cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
+    ```
+    
+    + last install the changes
+    
+    ```
+    cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
+    ```
+    and something wrong about license, it show the URL
