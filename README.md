@@ -231,7 +231,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     ```
     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     ```
-     and something wrong about license, it show the URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
+     and something wrong about license, logs give a URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      and searched the "Chromium OS dev", find this [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      so i copyed "Google-TOS" license.
      
@@ -321,7 +321,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ ls ../../dev/host/netboot_firmware_settings.py
     -bash: ../../dev/host/netboot_firmware_settings.py: No such file or directory
     ```
-    + ~and found that file is empty, it may project's bug. and i found this in Google [netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago](https://chromium.googlesource.com/chromiumos/platform/dev-util/)~
+    + ~found that file is empty, it may project's bug. and i found this in Google [netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago](https://chromium.googlesource.com/chromiumos/platform/dev-util/)~
     + ~so I'm sure that, the softlink is wrong. Fix it.~
     + so download file from [here](https://chromium.googlesource.com/chromiumos/platform/dev-util/+/c0bcabb6682eb0ad4597ee32e270d66c5633c340/host/netboot_firmware_settings.py) , and try relplace it.
     
