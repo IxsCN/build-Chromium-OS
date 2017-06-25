@@ -192,12 +192,10 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ repo start marixs
     ```
     
-    + and then fix the error. may two ways to fix it.
-        + edit the src/platform-cros-util-unittest.c
-        + edit Makefile, and add -std=c11
-        
-    I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.
-    like this:
+    + then fix the error. two ways may fix it.
+    + 1. edit the src/platform-cros-util-unittest.c
+    + 2. edit Makefile, and add -std=c11
+    I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.like this:
     
     ```
     for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
@@ -258,7 +256,6 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
      
 + fix error of chromeos-base/factory.
     + searched: I found this post. [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ),  hopeless (‘⊙д-) .
-
     + like last error (net-misc/tlsdate).
     
     ```
