@@ -1,24 +1,23 @@
 # Build  Chromium OS step by step
 
-###  It is little hard for me, everything is strange,  even developer-guide is very detailed.
+###  It is little hard for me, everything is strange,  fortunately developer-guide is very detailed.
 
 ## summary
 
 + some foolish mistake I had made,  finally I didn't complete the exercise.
 
     + creat workspace on smb.
-    + creat workspace on NFS.
-    + didn't use [-g minilayout] purposely, waste so much time.
+    + creat workspace on NFS.  
+    + didn't use [-g minilayout] purposely, waste so much time.
     + misunderstand the log tips, and send mail for you.
-    + in the end，I am not complete the exercise.
-    + all of all, Too eager to do every.
-    + For the above reasons， I had did these peocess all over again, even three times.
+    + in the end，i am not complete the exercise.
+    + all of all, too eager to do every.
+    + for the above reasons， I had did these peocess all over again, even three times.
     
 + learned
 
-    + I had learned the process of Build  Chromium OS，although not build image sucessful.
+    + the process of Build Chromium OS，although not build image sucessful.
     + I believe that, the way of "change the booting animation to Flint OS" is same with fix bug (net-misc/tlsdate).
-
 
 ### 0. deal with the network
 + Determine the purpose
