@@ -254,10 +254,10 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
      ```
      
 + fix error of chromeos-base/factory.
-    + searched: I found this post. [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ),  hopeless (‘⊙д-) .
-    + like last error (net-misc/tlsdate).
+    + I found this post. [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ),  no Reply, feel hopeless (‘⊙д-) .
+    + same as last error (net-misc/tlsdate).
     
-    ```
+    ```shell
     $ PACKAGE_NAME="chromeos-base/factory"
     $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
     $ repo sync
@@ -281,13 +281,13 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + from the result, compile is PASS,so guess the unit test script is not good
     + by read Makefile, I find unittest blacklist fuc,so have a try.
     
-    ```
+    ```shell
     /mnt/host/source/src/platform/factory/devtools/mk $ vi unittests.blacklist 
     ```
     
     + return OK, install
     
-    ```
+    ```shell
     $ cros_workon_make --board=${BOARD} chromeos-base/factory --install
     ...
     ...
@@ -302,7 +302,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     
     + try fail. back to this alert "factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py""
     
-    ```
+    ```shell
     $ ls -l | grep netboot_firmware_settings.py
     lrwxrwxrwx 1 sunxiaoyu chronos    43 6月  25 19:58 netboot_firmware_settings.py -> ../../dev/host/netboot_firmware_settings.py
     $ ls ../../dev/host/netboot_firmware_settings.py
