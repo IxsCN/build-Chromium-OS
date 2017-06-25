@@ -178,9 +178,7 @@ emerge: Maybe you meant any of these: virtual/target-os-dev, virtual/target-os-t
 it seems not work, and also I get wrong understand of this. So i gave up and find a new laptop, ALL OVER AGAIN.
 
 + fix error of net-misc/tlsdate
-
 According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
-
     + first mark the package (net-misc/tlsdate) as active. and sync down source sources
     
     ```
@@ -194,6 +192,7 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
     ```
     repo start marixs
     ```
+    
     + and then fix the error
     may two ways to fix it.
         + edit the src/platform-cros-util-unittest.c
@@ -201,6 +200,7 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
         
     I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.
     like this:
+    
     ```
     for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
     ```
@@ -223,4 +223,5 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
     ```
     cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     ```
+    
     and something wrong about license, it show the URL
