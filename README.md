@@ -41,7 +41,7 @@ PWD is qgxj
     + git clone
     
     ``` shell
-    cd ~
+    $ cd ~
     $ git clone https://github.com/shadowsocksr/shadowsocksr-libev.git
      ```
 
