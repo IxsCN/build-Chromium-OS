@@ -128,12 +128,15 @@ all toubles has was recorded in Mind Mapping.
     ```
 + it take so much time, and in the end it done,but two package error
     + chromeos-base/factory
+    
     ```
     factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py"
     factory-0.2.0-r372: rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1178) [sender=3.1.2]
 factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
     ```
+    
     + net-misc/tlsdate
+    
     ```
     make[1]: Entering directory '/build/x86-generic/tmp/portage/net-misc/tlsdate-0.0.5-r48/work/tlsdate-0.0.5'
     tlsdate-0.0.5-r48:   CC       src/conf.o
