@@ -1,4 +1,8 @@
 # Build  Chromium OS step by step
+## this is a brief description about what i have done.
+this mind Map show [more details](https://www.processon.com/view/link/594e9ae4e4b0ad619ac510cd)
+
+PWD is qgxj
 
 ###  It is little hard for me, everything is strange,  fortunately developer-guide is very detailed.
 
@@ -17,18 +21,25 @@
 + learned
 
     + the process of Build Chromium OS，although not build image sucessful.
-    + I believe that, the way of "change the booting animation to Flint OS" is same with fix bug (net-misc/tlsdate).
+    + I believe that, the way of "change the booting animation to Flint OS" is same with fix package bug (net-misc/tlsdate).
+    + some other skills up. eg: mount, git
+    
++ about unrepaired error (chromeos-base/factory)
+    + [repo log](https://chromium.googlesource.com/chromiumos/platform/dev-util/),c0bcabb netboot_firmware_settings.py: Fix lint errors by Drew Davenport · 11 days ago. is this file(netboot_firmware_settings.py) be changed from dev folder  to dev-util folder?  to be confirmed.
+    + this post is same with me [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ), but no one reply.
+    + if i get old version code from repo, will be OK? no enough time to check. to be confirmed.
+
 
 ### 0. deal with the network
 + Determine the purpose
     + penetrate the firewall
 + server 
     + ShadowsocksR can also achieve the purpose 
-    + so I skip this step
+    + so skip this step
 + client
     + git clone
     
-    ```shell
+    ``` shell
     $ git clone https://github.com/shadowsocksr/shadowsocksr-libev.git
      ```
 
@@ -257,8 +268,8 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     ```
     
      and something wrong about license, logs give a URL [http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
-     and searched the "Chromium OS dev", find this [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
-     so i copyed "Google-TOS" license.
+     and searched the "Chromium OS dev", find this page [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
+     , so i copyed "Google-TOS" license.
      
      ```
      $ cp  ~/trunk/src/third_party/chromiumos-overlay/licenses/Google-TOS ~/trunk/src/third_party/chromiumos-overlay/licenses/copyright-attribution/net-misc/tlsdate
@@ -354,6 +365,5 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     $ cd ./../dev/host/ 
     $ wget http://nas.marixs/netboot_firmware_settings.py && chmod 777 netboot_firmware_settings.py
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
-    ```
-    
-~1111111~
+    ```
+    + and i have no idea for this.
