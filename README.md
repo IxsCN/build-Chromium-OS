@@ -228,6 +228,34 @@ According to the log, it seems easy to fix, edit the file src/platform-cros-util
      so i copyed "Google-TOS" license.
      
      ```
-     
+     $ cp  ~/trunk/src/third_party/chromiumos-overlay/licenses/Google-TOS ~/trunk/src/third_party/chromiumos-overlay/licenses/copyright-attribution/net-misc/tlsdate
+     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
+     ....
+     ....
+     ....
+     >>> Installing (1 of 1) net-misc/tlsdate-9999::chromiumos to /build/x86-generic/
+     * Removing /usr/lib*/*.la
+     * Removing /etc/init.d
+     * Removing /etc/conf.d
+     * Removing /etc/logrotate.d
+     * Removing /etc/sandbox.d
+     * Removing /usr/share/bash-completion
+     * Removing /usr/share/man
+     * Removing /usr/share/info
+     * Removing /usr/share/doc
+     * Running stacked hooks for pre_pkg_preinst
+     *    wrap_old_config_scripts ...                                                                                               [ ok ]
+
+     * Messages for package net-misc/tlsdate-9999 merged to /build/x86-generic/:
+
+     * For inplace build you need to modify the sandbox
+     * Set SANDBOX_WRITE=/mnt/host/source in your env.
+    >>> Auto-cleaning packages...
+
+    >>> Using system located in ROOT tree /build/x86-generic/
+
+    >>> No outdated packages were found on your system.
+
      ```
+     
 
