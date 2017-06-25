@@ -31,21 +31,23 @@ PWD is qgxj
 
 
 ### 0. deal with the network
-+ Determine the purpose
-    + penetrate the firewall
++ purpose
+    + bypass the GFW
 + server 
-    + ShadowsocksR can also achieve the purpose 
+    + ShadowsocksR can also achieve the purpose
+    + i have a ShadowsocksR server on Google cloud.
     + so skip this step
 + client
     + git clone
     
     ``` shell
+    cd ~
     $ git clone https://github.com/shadowsocksr/shadowsocksr-libev.git
      ```
 
     + install dependent  library
 
-    ```shell
+    ``` shell
     $ sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev asciidoc xmlto
     ```
 
@@ -59,26 +61,26 @@ PWD is qgxj
 
 some trouble with libpcre libpcre-dev.
 use apt install can't fix it.
-In the end make libpcre by my self.
+In the end, resolve it by make libpcre my self.
 
 ### 1. Get Chromium OS code and start building
 
-+ Install depot_tools
++ install depot_tools
 
-    ```
+    ``` shell
     $ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
     ```
  
 + add depot_tools to path
 
-    ```
+    ``` shell
     $ export PATH=`pwd`/depot_tools:"$PATH"
     ```
  
 + Tweak your sudoers configuration
     It is not compatible with  cros_sdk.
 
-    ```
+    ``` shell
     $ cd /tmp
     $ cat > ./sudo_editor <<EOF
     #!/bin/sh
@@ -91,21 +93,21 @@ In the end make libpcre by my self.
  
 + set e-mail & name for git
 
-    ```
+    ``` shell
     $ git config --global user.email "you@example.com"
     $ git config --global user.name "Your Name"
     ```
  
-+ Verify  architecture
++ Verify  architecture，won't be able to build Chromium OS，except x86_64
 
-    ```
+    ``` shell
     $ uname -m
     x86_64
     ```
 
 + Verify umask setting by touch file
 
-    ```
+    ``` shell
     $ umask
     0002
     $ touch test && ll test
@@ -116,20 +118,20 @@ In the end make libpcre by my self.
 
     + repo init
 
-    ```
+    ``` shell
     $ repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url     https://chromium.googlesource.com/external/repo.git -g minilayout
      ```
     + repo sync
 
-    ```
-    $ repo sync -j4
+    ``` shell
+    $ repo sync -j10
     ```
 + Google api key
     There are two ways to providing  api key into OS.
 "at Build Time " or "at Runtime",
 I think  providing keys at Runtime could be easily, so I choose this way.
 
-    ```
+    ``` shell
     GOOGLE_API_KEY=your_api_key
     GOOGLE_DEFAULT_CLIENT_ID=your_client_id
     GOOGLE_DEFAULT_CLIENT_SECRET=your_client_secret
@@ -138,14 +140,14 @@ append them to /etc/chrome_dev.conf.
 
 + Create a chroot
 so many toubles this section.
-all toubles has was recorded in Mind Mapping.
+all toubles has was recorded in Mind Map.
  
-    ```
+    ``` shell
     $ cros_sdk
     ```
 + build package
 
-    ```
+    ``` shell
     $ export BOARD=x86-generic
     $ ./set_shared_user_password.sh
     $ ./build_packages --board=${BOARD}
@@ -153,7 +155,7 @@ all toubles has was recorded in Mind Mapping.
 + it take so much time, and in the end it done,but two package error
     + chromeos-base/factory
     
-    ```
+    ``` shell
     factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py"
     factory-0.2.0-r372: rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1178) [sender=3.1.2]
     factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
@@ -161,7 +163,7 @@ all toubles has was recorded in Mind Mapping.
     
     + net-misc/tlsdate
     
-    ```
+    ``` shell
     make[1]: Entering directory '/build/x86-generic/tmp/portage/net-misc/tlsdate-0.0.5-r48/work/tlsdate-0.0.5'
     tlsdate-0.0.5-r48:   CC       src/conf.o
     tlsdate-0.0.5-r48:   CC       src/conf-unittest.o
@@ -187,7 +189,7 @@ all toubles has was recorded in Mind Mapping.
 + try build image.
     guest that, if the package is not impotant, build image will work.
 
-    ```
+    ``` shell
     $ ./build_image --board=${BOARD} --noenable_rootfs_verification test
     ....
     ....
@@ -204,7 +206,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
 + fix error of net-misc/tlsdate. According to the log, it seems easy to fix, edit the file src/platform-cros-util-unittest.c, and Declare variables i before for loop, just like this.
     + first mark the package (net-misc/tlsdate) as active. and sync down source sources
     
-    ```
+    ``` shell
     $ PACKAGE_NAME="net-misc/tlsdate"
     $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
     $ repo sync
@@ -212,7 +214,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     
     + second Create a branch 
     
-    ```
+    ``` shell
     $ repo start marixs
     ```
     
@@ -220,26 +222,26 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + 1. edit the src/platform-cros-util-unittest.c
     + 2. edit Makefile, and add -std=c11, I choose first solution, because i don't have deep understand for this project, edit Makefile may be the bad idea.like this:
     
-    ```
-    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
+    ``` c
+    for (size_t i = 0; i < ARRAYSIZE(kCases); ++i) {
     ```
 
     to
 
-    ```
+    ``` c
     size_t i=0;
     for (i = 0; i < ARRAYSIZE(kCases); ++i) {
     ```
     
     + make the package
     
-    ```
+    ``` shell
     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --test
     ```
     
     + install the changes
     
-    ```
+    ``` shell
     $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
     ...
     ...
@@ -271,7 +273,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
      and searched the "Chromium OS dev", find this page [Licensing for Chromium OS Developers](http://www.chromium.org/chromium-os/licensing-for-chromiumos-package-owners)
      , so i copyed "Google-TOS" license.
      
-     ```
+     ``` shell
      $ cp  ~/trunk/src/third_party/chromiumos-overlay/licenses/Google-TOS ~/trunk/src/third_party/chromiumos-overlay/licenses/copyright-attribution/net-misc/tlsdate
      $ cros_workon_make --board=${BOARD} ${PACKAGE_NAME} --install
      ....
@@ -307,7 +309,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + found this post [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ), no Reply, feel hopeless (‘⊙д-) 
     + same as last error (net-misc/tlsdate)
     
-    ```
+    ``` shell
     $ PACKAGE_NAME="chromeos-base/factory"
     $ cros_workon --board=${BOARD} start ${PACKAGE_NAME}
     $ repo sync
@@ -330,13 +332,13 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + compile is PASS, guess the unit test script is not good
     + by read Makefile, I find unittest blacklist fuc,so have a try.
 
-    ```
+    ``` shell
     /mnt/host/source/src/platform/factory/devtools/mk $ vi unittests.blacklist 
     ```
     
     + return OK, try install
     
-    ```
+    ``` shell
     $ cros_workon_make --board=${BOARD} chromeos-base/factory --install
     ...
     ...
@@ -351,7 +353,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     
     + try fail. back to this alert "factory-0.2.0-r372: symlink has no referent: "/build/x86-generic/tmp/portage/chromeos-base/factory-0.2.0-r372/work/factory-0.2.0/setup/netboot_firmware_settings.py""
     
-    ```
+    ``` shell
     $ ls -l | grep netboot_firmware_settings.py
     lrwxrwxrwx 1 sunxiaoyu chronos    43 6月  25 19:58 netboot_firmware_settings.py -> ../../dev/host/netboot_firmware_settings.py
     $ ls ../../dev/host/netboot_firmware_settings.py
@@ -361,7 +363,7 @@ it seems not work, and also I get wrong understand of this. So i gave up and fin
     + ~so I'm sure that, the softlink is wrong. Fix it.~
     + so download file from [here](https://chromium.googlesource.com/chromiumos/platform/dev-util/+/c0bcabb6682eb0ad4597ee32e270d66c5633c340/host/netboot_firmware_settings.py) , and try relplace it.
     
-    ```
+    ``` shell
     $ cd ./../dev/host/ 
     $ wget http://nas.marixs/netboot_firmware_settings.py && chmod 777 netboot_firmware_settings.py
     cros_workon_make --board=${BOARD} chromeos-base/factory --install
