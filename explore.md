@@ -8,5 +8,8 @@ factory-0.2.0-r372: rsync error: some files/attrs were not transferred (see prev
 factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
 ```
 
-  + try this
++ try this
+  
   [Google Chromium OS Factory Software Platform](https://chromium.googlesource.com/chromiumos/platform/factory/+/master/README.md)
++ wait for Answer
+[build fail in chromeos-base/factory](https://stackoverflow.com/questions/44763650/build-fail-in-chromeos-base-factory)
