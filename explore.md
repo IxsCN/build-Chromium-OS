@@ -10,6 +10,19 @@ factory-0.2.0-r372: ERROR: Unexpected failure (exit code: 23). Abort.
 
 + try this
   
-  [Google Chromium OS Factory Software Platform](https://chromium.googlesource.com/chromiumos/platform/factory/+/master/README.md)
+  + [Google Chromium OS Factory Software Platform](https://chromium.googlesource.com/chromiumos/platform/factory/+/master/README.md)
+  + NG
+   
 + wait for Answer
 [build fail in chromeos-base/factory](https://stackoverflow.com/questions/44763650/build-fail-in-chromeos-base-factory)
+  + it works 
+  + But why? need follow this group [Builds fail in chromeos-base/factory](https://groups.google.com/a/chromium.org/forum/#!searchin/chromium-os-dev/base$2Ffactory/chromium-os-dev/-rR3wIhyGRI/ZK9f6jc8AQAJ)
+
++ build image
+
+```
+./build_image --board=${BOARD} --noenable_rootfs_verification test
+```
+
+wait .... (no error, nice)
+
