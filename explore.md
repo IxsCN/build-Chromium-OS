@@ -78,3 +78,31 @@ chromiumos_test_image.bin is the image.
 ```
 ./image_to_vm.sh --board=${BOARD} --test_image
 ```
+wait...
+Done.
+```
+65536 bytes (66 kB) copied, 0.000228664 s, 287 MB/s
+INFO    : Kernel partition image emitted: /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/hd_vmlinuz.image
+INFO    : Root filesystem hash emitted: /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/rootfs.hash
+INFO    : Kernel image A   size is 5600256 bytes.
+INFO    : Kernel image B   size is 5600256 bytes.
+INFO    : Kernel partition A size is 16777216 bytes.
+INFO    : Kernel partition B size is 16777216 bytes.
+INFO    : Appending rootfs.hash (16519168 bytes) to the root fs
+INFO    : Extracting the kernel command line from /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/vmlinuz.image
+INFO    : Unmounting image from /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/stateful_dir and /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/rootfs_dir
+Cleaning up /usr/local symlinks for /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/stateful_dir/dev_image
+partx: /dev/loop0: error deleting partition 5
+Creating final image
+Created image at /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1
+If you have qemu-kvm installed, you can start the image by:
+sudo kvm -m 1024 -vga cirrus -pidfile /tmp/kvm.pid -net nic,model=virtio -net user,hostfwd=tcp:127.0.0.1:9222-:22 \
+-hda /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/chromiumos_qemu_image.bin
+```
++ copy it
+
+```
+scp /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/chromiumos_qemu_image.bin 'toor@192.168.2.220:/media/toor/wd/'
+```
+wait...
+> sleep ....
