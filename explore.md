@@ -70,3 +70,11 @@ drwxr-xr-x 2 marixs chronos       4096 6月  28 00:02 esp
 -rw-r--r-- 1 marixs chronos    5507152 6月  28 00:03 vmlinuz.bin
 
 ```
+
+chromiumos_test_image.bin is the image.
+
++ transform format 
+
+```
+./image_to_vm.sh --board=${BOARD} --test_image
+```
