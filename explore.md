@@ -106,3 +106,26 @@ scp /mnt/host/source/src/build/images/x86-generic/R61-9690.0.2017_06_27_2334-a1/
 ```
 wait...
 > sleep ....
+done..
+生成的是kvm的镜像....
+我需要启动盘，重新来过
+```
+ $ cros flash usb:///dev/sdb1 ${BOARD}/latest
+
+/dev/sdb1 is not a removable device.
+
+Do you want to continue? (yes/No)? yes
+cros flash usb:///dev/sdb1 ${BOARD}/latest
+
+/dev/sdb1 is not a removable device.
+
+ [###############################################################....] 90%
+
+```
+/dev/sdb1 是我的u盘，但是奇怪的是为什么会提示 not a removable devise呢？
+先不管等等再说。
+等待.....
+```
+00:18:49: NOTICE: cros flash completed successfully.
+```
+ok，去试试。
