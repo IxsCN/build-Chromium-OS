@@ -119,7 +119,7 @@ cros flash usb:///dev/sdb1 ${BOARD}/latest
 
 /dev/sdb1 is not a removable device.
 
- [###############################################################....] 90%
+ [###############################################################-----] 90%
 
 ```
 /dev/sdb1 是我的u盘，但是奇怪的是为什么会提示 not a removable devise呢？
@@ -129,3 +129,22 @@ cros flash usb:///dev/sdb1 ${BOARD}/latest
 00:18:49: NOTICE: cros flash completed successfully.
 ```
 ok，去试试。
+不能从u盘启动...为什么？
+> If a device path is specified, Cros Flash will check if the device is indeed removable. If no path is given, user will be prompted to choose from a list of removable devices. Note that auto-mounting of USB devices should be turned off as it may corrupt the disk image while it's being written.
+
+恩 坑了自己，因为u盘自动mount了。重新来过
+```
+cros flash usb:// ${BOARD}/latest
+Removable device(s) found. Please select/confirm to continue:
+  [0]: SanDisk Ultra Fit 14.3G (/dev/sdb)
+Please choose an option [0-0]: 0
+[###############################################################-----] 90%
+```
+
+感觉这次写入快了很多，心理作用吗？
+```
+ [######################################################################] 100%
+00:33:08: NOTICE: cros flash completed successfully.
+```
+这次应该可以了，写入成功后u盘出现三个分区。分别是ROOT-A,OEM,STATE.
+现在去试试。
