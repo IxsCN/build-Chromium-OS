@@ -146,9 +146,15 @@ Please choose an option [0-0]: 0
  [######################################################################] 100%
 00:33:08: NOTICE: cros flash completed successfully.
 ```
+
 这次应该可以了，写入成功后u盘出现三个分区。分别是ROOT-A,OEM,STATE.
 现在去试试。
 失败!!!!
 1. 虚拟机会卡在booting the kernel。
 2. 用booting the kernel 一闪而过之后 一直黑屏。
 ...睡觉，先不折腾了。
+看来vmware是不行了，在ubuntu上安装 qemu 吧。
+
+```
+$ apt-get install qemu
+```
